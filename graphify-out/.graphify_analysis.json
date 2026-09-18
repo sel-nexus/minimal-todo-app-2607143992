@@ -1,172 +1,32 @@
 {
   "communities": {
     "0": [
-      "package",
-      "package_description",
-      "package_name",
-      "package_private",
-      "package_scripts",
-      "package_scripts_test",
-      "package_scripts_test_e2e",
-      "package_version"
-    ],
-    "1": [
-      "index_addtodo",
-      "index_deletetodo",
-      "index_escapehtml",
-      "index_rendertodos",
-      "index_todo_records",
-      "index_toggletodo"
-    ],
-    "2": [
       "e2e_todo_spec",
       "e2e_todo_spec_opentodoapp",
       "e2e_todo_spec_path",
       "e2e_todo_spec_pathtofileurl",
       "e2e_todo_spec_test_expect"
     ],
-    "3": [
-      "plan_direct_open_runtime",
-      "plan_in_memory_session_state",
-      "plan_session_todo_workflow",
-      "readme_direct_open_runtime",
-      "test_results_todo_workflow_todo_workflow_screenshot"
+    "1": [
+      "package",
+      "package_description",
+      "package_name",
+      "package_private",
+      "package_version"
     ],
-    "4": [
-      "engine_workers_7105584b7daa_scratch_findings_test_critic_verdict",
-      "index_selector_contract",
-      "readme_stable_automation_selectors"
-    ],
-    "5": [
+    "2": [
       "package_devdependencies",
       "package_devdependencies_playwright_test",
       "playwright_test"
     ],
-    "6": [
+    "3": [
+      "package_scripts",
+      "package_scripts_test",
+      "package_scripts_test_e2e"
+    ],
+    "4": [
       "playwright_config",
       "playwright_config_defineconfig"
     ]
-  },
-  "cohesion": {
-    "0": 0.25,
-    "1": 0.5333333333333333,
-    "2": 0.4,
-    "3": 0.4,
-    "4": 0.6666666666666666,
-    "5": 0.6666666666666666,
-    "6": 1.0
-  },
-  "gods": [
-    {
-      "id": "plan_session_todo_workflow",
-      "label": "Session Todo Workflow",
-      "degree": 6
-    },
-    {
-      "id": "index_rendertodos",
-      "label": "renderTodos",
-      "degree": 6
-    },
-    {
-      "id": "index_todo_records",
-      "label": "Todo Records",
-      "degree": 4
-    },
-    {
-      "id": "package_scripts",
-      "label": "scripts",
-      "degree": 3
-    },
-    {
-      "id": "index_addtodo",
-      "label": "addTodo",
-      "degree": 3
-    },
-    {
-      "id": "index_toggletodo",
-      "label": "toggleTodo",
-      "degree": 3
-    },
-    {
-      "id": "index_deletetodo",
-      "label": "deleteTodo",
-      "degree": 3
-    },
-    {
-      "id": "package_devdependencies_playwright_test",
-      "label": "@playwright/test",
-      "degree": 2
-    },
-    {
-      "id": "plan_direct_open_runtime",
-      "label": "Direct-Open Runtime",
-      "degree": 2
-    },
-    {
-      "id": "readme_stable_automation_selectors",
-      "label": "Stable Automation Selectors",
-      "degree": 2
-    }
-  ],
-  "surprises": [
-    {
-      "source": "Todo Workflow Screenshot",
-      "target": "Session Todo Workflow",
-      "source_files": [
-        "test-results/todo-workflow.png",
-        "PLAN.md"
-      ],
-      "confidence": "INFERRED",
-      "relation": "conceptually_related_to",
-      "why": "inferred connection - not explicitly stated in source; crosses file types (doc \u2194 image); connects across different repos/directories; peripheral node `Todo Workflow Screenshot` unexpectedly reaches hub `Session Todo Workflow`"
-    },
-    {
-      "source": "Direct-Open Runtime",
-      "target": "Direct-Open Runtime",
-      "source_files": [
-        "README.md",
-        "PLAN.md"
-      ],
-      "confidence": "INFERRED",
-      "relation": "semantically_similar_to",
-      "why": "inferred connection - not explicitly stated in source; connects across different repos/directories; semantically similar concepts with no structural link"
-    },
-    {
-      "source": "Session Todo Workflow",
-      "target": "deleteTodo",
-      "source_files": [
-        "PLAN.md",
-        "index.html"
-      ],
-      "confidence": "INFERRED",
-      "relation": "references",
-      "why": "inferred connection - not explicitly stated in source; connects across different repos/directories; bridges separate communities"
-    },
-    {
-      "source": "Session Todo Workflow",
-      "target": "toggleTodo",
-      "source_files": [
-        "PLAN.md",
-        "index.html"
-      ],
-      "confidence": "INFERRED",
-      "relation": "references",
-      "why": "inferred connection - not explicitly stated in source; connects across different repos/directories; bridges separate communities"
-    },
-    {
-      "source": "Session Todo Workflow",
-      "target": "addTodo",
-      "source_files": [
-        "PLAN.md",
-        "index.html"
-      ],
-      "confidence": "EXTRACTED",
-      "relation": "references",
-      "why": "connects across different repos/directories; bridges separate communities"
-    }
-  ],
-  "tokens": {
-    "input": 0,
-    "output": 0
   }
 }
