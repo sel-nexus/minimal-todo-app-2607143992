@@ -1,0 +1,12 @@
+{
+  "name": "minimal-todo-e2e-fixture",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Direct-open vanilla todo fixture with browser validation.",
+  "scripts": {
+    "test:e2e": "node node_modules/@playwright/test/cli.js test --config playwright.config.js"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.58.2"
+  }
+}

@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A deterministic in-session todo fixture for browser test validation.">
+  <meta name="theme-color" content="#0b5d57">
+  <title>Todo App</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --background: #f7f7f3;
+      --surface: #ffffff;
+      --foreground: #1d2524;
+      --muted: #697370;
+      --border: #d8dedb;
+      --accent: #0b5d57;
+      --accent-hover: #084a46;
+      --ring: #0b5d57;
+      --danger: #9b302c;
+      --radius: 7px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      min-width: 320px;
+      margin: 0;
+      background: var(--background);
+      color: var(--foreground);
+      font-family: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    main {
+      width: min(100% - 32px, 640px);
+      margin: 0 auto;
+      padding: 72px 0;
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--muted);
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2rem, 6vw, 3rem);
+      font-weight: 600;
+      letter-spacing: -0.035em;
+      line-height: 1.08;
+    }
+
+    .intro {
+      max-width: 52ch;
+      margin: 16px 0 40px;
+      color: var(--muted);
+    }
+
+    .task-form {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 10px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    label {
+      display: block;
+      margin-bottom: 7px;
+      font-size: 0.875rem;
+      font-weight: 600;
+    }
+
+    input, button { font: inherit; }
+
+    input {
+      width: 100%;
+      min-height: 44px;
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+      color: var(--foreground);
+    }
+
+    button {
+      min-height: 44px;
+      padding: 10px 16px;
+      border: 1px solid transparent;
+      border-radius: var(--radius);
+      cursor: pointer;
+    }
+
+    #add-button {
+      align-self: end;
+      background: var(--accent);
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    #add-button:hover { background: var(--accent-hover); }
+
+    input:focus-visible, button:focus-visible, .todo-checkbox:focus-visible {
+      outline: 3px solid color-mix(in srgb, var(--ring) 35%, transparent);
+      outline-offset: 2px;
+    }
+
+    #empty-state {
+      margin: 28px 0 0;
+      color: var(--muted);
+    }
+
+    #todo-list {
+      margin: 20px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .todo-item {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .todo-checkbox {
+      width: 18px;
+      height: 18px;
+      margin: 0;
+      accent-color: var(--accent);
+    }
+
+    .todo-title {
+      overflow-wrap: anywhere;
+    }
+
+    .todo-title.is-complete {
+      color: var(--muted);
+      text-decoration: line-through;
+    }
+
+    .delete-button {
+      min-height: 36px;
+      padding: 6px 10px;
+      border-color: var(--border);
+      background: transparent;
+      color: var(--danger);
+      font-size: 0.875rem;
+    }
+
+    .delete-button:hover { background: #f9edeb; }
+
+    @media (max-width: 480px) {
+      main { padding: 48px 0; }
+      .task-form { grid-template-columns: 1fr; }
+      #add-button { width: 100%; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="eyebrow">Session workflow</p>
+    <h1>Todo App</h1>
+    <p class="intro">Add a task, complete it when it is done, or remove it from this browser session.</p>
+
+    <form id="todo-form" class="task-form" novalidate>
+      <div>
+        <label for="todo-input">New task</label>
+        <input id="todo-input" data-testid="todo-input" type="text" autocomplete="off">
+      </div>
+      <button id="add-button" data-testid="add-button" type="submit">Add</button>
+    </form>
+
+    <p id="empty-state" data-testid="empty-state">No tasks yet.</p>
+    <ul id="todo-list" data-testid="todo-list"></ul>
+  </main>
+
+  <script>
+    /** Store the session-only todo records in insertion order. */
+    let todos = [];
+    /** Assign deterministic sequential identifiers to new tasks. */
+    let nextId = 1;
+
+    const form = document.getElementById('todo-form');
+    const input = document.getElementById('todo-input');
+    const emptyState = document.getElementById('empty-state');
+    const todoList = document.getElementById('todo-list');
+
+    /** Escape text before using it in the full-list HTML render. */
+    function escapeHtml(value) {
+      const element = document.createElement('span');
+      element.textContent = value;
+      return element.innerHTML;
+    }
+
+    /** Render the complete list and synchronize visibility of the empty state. */
+    function renderTodos() {
+      emptyState.style.display = todos.length === 0 ? 'block' : 'none';
+      todoList.innerHTML = todos.map((todo) => `
+        <li class="todo-item" data-testid="todo-item-${todo.id}">
+          <input class="todo-checkbox" data-testid="todo-checkbox-${todo.id}" type="checkbox" aria-label="Mark ${escapeHtml(todo.title)} complete" ${todo.completed ? 'checked' : ''}>
+          <span class="todo-title${todo.completed ? ' is-complete' : ''}" data-testid="todo-title-${todo.id}">${escapeHtml(todo.title)}</span>
+          <button class="delete-button" data-testid="todo-delete-${todo.id}" type="button">Delete</button>
+        </li>
+      `).join('');
+    }
+
+    /** Add a trimmed title as a new todo, ignoring blank values. */
+    function addTodo() {
+      const title = input.value.trim();
+      if (!title) {
+        return;
+      }
+      todos.push({ id: nextId, title, completed: false });
+      nextId += 1;
+      input.value = '';
+      renderTodos();
+    }
+
+    /** Toggle the completion flag belonging to a specific deterministic ID. */
+    function toggleTodo(id) {
+      todos = todos.map((todo) => todo.id === id ? { ...todo, completed: !todo.completed } : todo);
+      renderTodos();
+    }
+
+    /** Remove only the todo belonging to a specific deterministic ID. */
+    function deleteTodo(id) {
+      todos = todos.filter((todo) => todo.id !== id);
+      renderTodos();
+    }
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      addTodo();
+    });
+
+    todoList.addEventListener('change', (event) => {
+      const checkbox = event.target.closest('[data-testid^="todo-checkbox-"]');
+      if (checkbox) {
+        toggleTodo(Number(checkbox.dataset.testid.replace('todo-checkbox-', '')));
+      }
+    });
+
+    todoList.addEventListener('click', (event) => {
+      const button = event.target.closest('[data-testid^="todo-delete-"]');
+      if (button) {
+        deleteTodo(Number(button.dataset.testid.replace('todo-delete-', '')));
+      }
+    });
+
+    renderTodos();
+  </script>
+</body>
+</html>
