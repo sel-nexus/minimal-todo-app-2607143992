@@ -1,0 +1,612 @@
+{
+  "directed": false,
+  "multigraph": false,
+  "graph": {
+    "hyperedges": [
+      {
+        "id": "todo_state_rendering_workflow",
+        "label": "Todo State Rendering Workflow",
+        "nodes": [
+          "index_addtodo",
+          "index_toggletodo",
+          "index_deletetodo",
+          "index_rendertodos",
+          "index_todo_records"
+        ],
+        "relation": "participate_in",
+        "confidence": "INFERRED",
+        "confidence_score": 0.95,
+        "source_file": "index.html"
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "label": "todo.spec.js",
+      "file_type": "code",
+      "source_file": "e2e/todo.spec.js",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "e2e_todo_spec",
+      "community": 2,
+      "community_name": "e2e/todo.spec.js",
+      "norm_label": "todo.spec.js"
+    },
+    {
+      "label": "{ test, expect }",
+      "file_type": "code",
+      "source_file": "e2e/todo.spec.js",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "e2e_todo_spec_test_expect",
+      "community": 2,
+      "community_name": "e2e/todo.spec.js",
+      "norm_label": "{ test, expect }"
+    },
+    {
+      "label": "path",
+      "file_type": "code",
+      "source_file": "e2e/todo.spec.js",
+      "source_location": "L2",
+      "_origin": "ast",
+      "id": "e2e_todo_spec_path",
+      "community": 2,
+      "community_name": "e2e/todo.spec.js",
+      "norm_label": "path"
+    },
+    {
+      "label": "{ pathToFileURL }",
+      "file_type": "code",
+      "source_file": "e2e/todo.spec.js",
+      "source_location": "L3",
+      "_origin": "ast",
+      "id": "e2e_todo_spec_pathtofileurl",
+      "community": 2,
+      "community_name": "e2e/todo.spec.js",
+      "norm_label": "{ pathtofileurl }"
+    },
+    {
+      "label": "openTodoApp()",
+      "file_type": "code",
+      "source_file": "e2e/todo.spec.js",
+      "source_location": "L6",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "e2e_todo_spec_opentodoapp",
+      "community": 2,
+      "community_name": "e2e/todo.spec.js",
+      "norm_label": "opentodoapp()"
+    },
+    {
+      "label": "package.json",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "package",
+      "community": 0,
+      "community_name": "package.json",
+      "norm_label": "package.json"
+    },
+    {
+      "label": "name",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L2",
+      "_origin": "ast",
+      "id": "package_name",
+      "community": 0,
+      "community_name": "package.json",
+      "norm_label": "name"
+    },
+    {
+      "label": "version",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L3",
+      "_origin": "ast",
+      "id": "package_version",
+      "community": 0,
+      "community_name": "package.json",
+      "norm_label": "version"
+    },
+    {
+      "label": "private",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L4",
+      "_origin": "ast",
+      "id": "package_private",
+      "community": 0,
+      "community_name": "package.json",
+      "norm_label": "private"
+    },
+    {
+      "label": "description",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L5",
+      "_origin": "ast",
+      "id": "package_description",
+      "community": 0,
+      "community_name": "package.json",
+      "norm_label": "description"
+    },
+    {
+      "label": "scripts",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "package_scripts",
+      "community": 0,
+      "community_name": "package.json",
+      "norm_label": "scripts"
+    },
+    {
+      "label": "test",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "package_scripts_test",
+      "community": 0,
+      "community_name": "package.json",
+      "norm_label": "test"
+    },
+    {
+      "label": "test:e2e",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L8",
+      "_origin": "ast",
+      "id": "package_scripts_test_e2e",
+      "community": 0,
+      "community_name": "package.json",
+      "norm_label": "test:e2e"
+    },
+    {
+      "label": "devDependencies",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L10",
+      "_origin": "ast",
+      "id": "package_devdependencies",
+      "community": 5,
+      "community_name": "package.json",
+      "norm_label": "devdependencies"
+    },
+    {
+      "label": "@playwright/test",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L11",
+      "_origin": "ast",
+      "id": "package_devdependencies_playwright_test",
+      "community": 5,
+      "community_name": "package.json",
+      "norm_label": "@playwright/test"
+    },
+    {
+      "label": "@playwright/test",
+      "file_type": "concept",
+      "source_file": "package.json",
+      "source_location": "L11",
+      "_origin": "ast",
+      "id": "playwright_test",
+      "community": 5,
+      "community_name": "package.json",
+      "norm_label": "@playwright/test"
+    },
+    {
+      "label": "playwright.config.js",
+      "file_type": "code",
+      "source_file": "playwright.config.js",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "playwright_config",
+      "community": 6,
+      "community_name": "playwright.config.js",
+      "norm_label": "playwright.config.js"
+    },
+    {
+      "label": "{ defineConfig }",
+      "file_type": "code",
+      "source_file": "playwright.config.js",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "playwright_config_defineconfig",
+      "community": 6,
+      "community_name": "playwright.config.js",
+      "norm_label": "{ defineconfig }"
+    },
+    {
+      "label": "escapeHtml",
+      "file_type": "code",
+      "source_file": "index.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "index_escapehtml",
+      "community": 1,
+      "community_name": "index.html",
+      "norm_label": "escapehtml"
+    },
+    {
+      "label": "renderTodos",
+      "file_type": "code",
+      "source_file": "index.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "index_rendertodos",
+      "community": 1,
+      "community_name": "index.html",
+      "norm_label": "rendertodos"
+    },
+    {
+      "label": "addTodo",
+      "file_type": "code",
+      "source_file": "index.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "index_addtodo",
+      "community": 1,
+      "community_name": "index.html",
+      "norm_label": "addtodo"
+    },
+    {
+      "label": "toggleTodo",
+      "file_type": "code",
+      "source_file": "index.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "index_toggletodo",
+      "community": 1,
+      "community_name": "index.html",
+      "norm_label": "toggletodo"
+    },
+    {
+      "label": "deleteTodo",
+      "file_type": "code",
+      "source_file": "index.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "index_deletetodo",
+      "community": 1,
+      "community_name": "index.html",
+      "norm_label": "deletetodo"
+    },
+    {
+      "label": "Todo Records",
+      "file_type": "concept",
+      "source_file": "index.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "index_todo_records",
+      "community": 1,
+      "community_name": "index.html",
+      "norm_label": "todo records"
+    },
+    {
+      "label": "Todo Selector Contract",
+      "file_type": "concept",
+      "source_file": "index.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "index_selector_contract",
+      "community": 4,
+      "community_name": "findings.md",
+      "norm_label": "todo selector contract"
+    },
+    {
+      "label": "Test Critic Verdict",
+      "file_type": "document",
+      "source_file": ".engine/workers/7105584b7daa/scratch/findings.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "engine_workers_7105584b7daa_scratch_findings_test_critic_verdict",
+      "community": 4,
+      "community_name": "findings.md",
+      "norm_label": "test critic verdict"
+    }
+  ],
+  "links": [
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "e2e/todo.spec.js",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "e2e_todo_spec",
+      "target": "e2e_todo_spec_opentodoapp",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "e2e/todo.spec.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "e2e_todo_spec",
+      "target": "e2e_todo_spec_path",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "e2e/todo.spec.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "e2e_todo_spec",
+      "target": "e2e_todo_spec_pathtofileurl",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "e2e/todo.spec.js",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "e2e_todo_spec",
+      "target": "e2e_todo_spec_test_expect",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "package",
+      "target": "package_description",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L10",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "package",
+      "target": "package_devdependencies",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "package",
+      "target": "package_name",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "package",
+      "target": "package_private",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "package",
+      "target": "package_scripts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "package",
+      "target": "package_version",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "package_scripts",
+      "target": "package_scripts_test",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "package_scripts",
+      "target": "package_scripts_test_e2e",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "package_devdependencies",
+      "target": "package_devdependencies_playwright_test",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L11",
+      "weight": 1.0,
+      "context": "import",
+      "_origin": "ast",
+      "source": "package_devdependencies_playwright_test",
+      "target": "playwright_test",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "playwright.config.js",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "playwright_config",
+      "target": "playwright_config_defineconfig",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "index_rendertodos",
+      "target": "index_escapehtml"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "index_addtodo",
+      "target": "index_rendertodos"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "index_deletetodo",
+      "target": "index_rendertodos"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "index_rendertodos",
+      "target": "index_selector_contract"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "index_rendertodos",
+      "target": "index_todo_records"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "index_toggletodo",
+      "target": "index_rendertodos"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "index_addtodo",
+      "target": "index_todo_records"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "index_toggletodo",
+      "target": "index_todo_records"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "index_deletetodo",
+      "target": "index_todo_records"
+    }
+  ],
+  "hyperedges": [
+    {
+      "id": "todo_state_rendering_workflow",
+      "label": "Todo State Rendering Workflow",
+      "nodes": [
+        "index_addtodo",
+        "index_toggletodo",
+        "index_deletetodo",
+        "index_rendertodos",
+        "index_todo_records"
+      ],
+      "relation": "participate_in",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "index.html"
+    }
+  ],
+  "built_at_commit": "aac94e365bd564fe59547e8461d7af8a7babf070"
+}
