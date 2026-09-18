@@ -42,14 +42,21 @@ test.describe('Minimal Todo App', () => {
     await expect(page.getByTestId('todo-list')).toContainText('Walk dog');
     await expect(page.locator('[data-testid^="todo-item-"]').evaluateAll((items) => items.map((item) => item.dataset.testid))).resolves.toEqual(['todo-item-1', 'todo-item-2']);
 
+    await page.getByTestId('todo-input').fill('<b>literal</b>');
+    await page.getByTestId('add-button').click();
+    await expect(page.getByTestId('todo-item-3')).toBeVisible();
+    await expect(page.getByTestId('todo-title-3')).toHaveText('<b>literal</b>');
+    await expect(page.getByTestId('todo-item-3').locator('b')).toHaveCount(0);
+
     await page.getByTestId('add-button').click();
     await page.getByTestId('todo-input').fill('   ');
     await page.getByTestId('todo-input').press('Enter');
-    await expect(page.locator('[data-testid^="todo-item-"]')).toHaveCount(2);
+    await expect(page.locator('[data-testid^="todo-item-"]')).toHaveCount(3);
 
     await page.getByTestId('todo-checkbox-1').check();
     await expect(page.getByTestId('todo-title-1')).toHaveCSS('text-decoration-line', 'line-through');
     await expect(page.getByTestId('todo-title-2')).toHaveCSS('text-decoration-line', 'none');
+    await page.screenshot({ path: 'test-results/todo-workflow.png', fullPage: true });
     await page.getByTestId('todo-checkbox-1').uncheck();
     await expect(page.getByTestId('todo-title-1')).toHaveCSS('text-decoration-line', 'none');
 
@@ -57,8 +64,18 @@ test.describe('Minimal Todo App', () => {
     await expect(page.getByTestId('todo-item-1')).toHaveCount(0);
     await expect(page.getByTestId('todo-item-2')).toBeVisible();
     await page.getByTestId('todo-delete-2').click();
+    await expect(page.getByTestId('todo-item-3')).toBeVisible();
+    await page.getByTestId('todo-delete-3').click();
     await expect(page.getByTestId('todo-list')).toBeEmpty();
     await expect(page.getByTestId('empty-state')).toBeVisible();
+
+    await page.getByTestId('todo-input').fill('Reload-reset task');
+    await page.getByTestId('add-button').click();
+    await expect(page.getByTestId('todo-list')).toContainText('Reload-reset task');
+    await page.reload();
+    await expect(page.getByTestId('empty-state')).toBeVisible();
+    await expect(page.getByTestId('todo-list')).toBeEmpty();
+    await expect(page.getByText('Reload-reset task')).toHaveCount(0);
 
     expect(browserIssues).toEqual([]);
   });

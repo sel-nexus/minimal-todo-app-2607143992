@@ -4,6 +4,7 @@
   "private": true,
   "description": "Direct-open vanilla todo fixture with browser validation.",
   "scripts": {
+    "test": "npm run test:e2e",
     "test:e2e": "node node_modules/@playwright/test/cli.js test --config playwright.config.js"
   },
   "devDependencies": {
